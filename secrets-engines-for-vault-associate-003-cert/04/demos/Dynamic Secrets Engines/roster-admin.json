@@ -1,0 +1,9 @@
+{
+    "db_name": "rosterdb",
+    "creation_statements": [
+      "CREATE ROLE \"{{name}}\" WITH LOGIN PASSWORD '{{password}}' VALID UNTIL '{{expiration}}' SUPERUSER"
+    ],
+    "default_ttl": "1h",
+    "max_ttl": "4h"
+  }
+  
