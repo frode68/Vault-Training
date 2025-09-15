@@ -66,23 +66,23 @@ openssl x509 -req -in vault-2.csr -CA ca.crt -CAkey ca.key -CAcreateserial \
 
 # Copy certificates to config directory
 echo "Copying certificates to config directories..."
-cp ca.crt ../config/vault-1/
-cp vault-1.crt ../config/vault-1/tls.crt
-cp vault-1.key ../config/vault-1/tls.key
-cp ca.crt ../config/vault-2/
-cp vault-2.crt ../config/vault-2/tls.crt
-cp vault-2.key ../config/vault-2/tls.key
+sudo cp ca.crt ../config/vault-1/
+sudo cp vault-1.crt ../config/vault-1/tls.crt
+sudo cp vault-1.key ../config/vault-1/tls.key
+sudo cp ca.crt ../config/vault-2/
+sudo cp vault-2.crt ../config/vault-2/tls.crt
+sudo cp vault-2.key ../config/vault-2/tls.key
 
 # Set appropriate permissions for Docker (similar to 2-deploy-vault.sh)
-chmod 644 ../config/vault-1/ca.crt ../config/vault-1/tls.crt
-chmod 600 ../config/vault-1/tls.key
-chmod 644 ../config/vault-2/ca.crt ../config/vault-2/tls.crt
-chmod 600 ../config/vault-2/tls.key
+sudo chmod 644 ../config/vault-1/ca.crt ../config/vault-1/tls.crt
+sudo chmod 600 ../config/vault-1/tls.key
+sudo chmod 644 ../config/vault-2/ca.crt ../config/vault-2/tls.crt
+sudo chmod 600 ../config/vault-2/tls.key
 
 # Copy Config file to config directory
 echo "Copying configuration files..."
-cp ../config/vault-1.hcl ../config/vault-1/
-cp ../config/vault-2.hcl ../config/vault-2/
+sudo cp ../config/vault-1.hcl ../config/vault-1/
+sudo cp ../config/vault-2.hcl ../config/vault-2/
 
 # Return to original directory
 cd ..

@@ -40,9 +40,9 @@ openssl x509 -req -in vault-0.csr -CA ca.crt -CAkey ca.key -CAcreateserial \
   -out vault-0.crt -days 825 -sha256 -extfile vault-0.ext
 
 # Copy certificates to config directory
-cp ca.crt ../config/vault-0/
-cp vault-0.crt ../config/vault-0/tls.crt
-cp vault-0.key ../config/vault-0/tls.key
+sudo cp ca.crt ../config/vault-0/
+sudo cp vault-0.crt ../config/vault-0/tls.crt
+sudo cp vault-0.key ../config/vault-0/tls.key
 
 echo "Certificates generated and placed in config/vault-0/"
 cd ..

@@ -33,14 +33,22 @@ docker run -d --name vault-1 \
   --network vault-network \
   hashicorp/vault:1.17.0 server
 
+  podman run -d --name vault-1 \
+  --cap-add=IPC_LOCK \
+  -p 8210:8200 \
+  -v "$(pwd)/config/vault-1:/vault/config" \
+  -v "$(pwd)/data/vault-1:/vault/data" \
+  --network vault-network \
+  hashicorp/vault:1.20 server
+
 # Deploy Vault server 2
-docker run -d --name vault-2 \
+podman run -d --name vault-2 \
   --cap-add=IPC_LOCK \
   -p 8220:8200 \
   -v "$(pwd)/config/vault-2:/vault/config" \
   -v "$(pwd)/data/vault-2:/vault/data" \
   --network vault-network \
-  hashicorp/vault:1.17.0 server
+  hashicorp/vault:1.20 server
 
 # Check Vault status of vault-1 and vault-2
 vault status -address="https://127.0.0.1:8210" -tls-server-name="vault-1" -ca-cert="$(pwd)/config/vault-1/ca.crt"
