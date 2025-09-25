@@ -1,4 +1,7 @@
 # Create the role for roster-admin using the Vault API and curl
+vault write -output-curl-string /database/roles/roster-admin @/home/frode/roster-admin.json
+curl -X PUT -H "X-Vault-Request: true" -H "X-Vault-Token: $(vault print token)" -d '{"creation_statements":["CREATE ROLE \"{{name}}\" WITH LOGIN PASSWORD '"'"'{{password}}'"'"' VALID UNTIL '"'"'{{expiration}}'"'"' SUPERUSER"],"db_name":"rosterdb","default_ttl":"1h","max_ttl":"4h"}' https://vault.balter.no:8200/v1/database/roles/roster-admin
+
 curl --header "X-Vault-Token: $(vault print token)" \
  --request POST \
  --data @roster-admin.json \

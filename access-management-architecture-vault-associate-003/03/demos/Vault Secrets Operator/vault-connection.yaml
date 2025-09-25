@@ -1,0 +1,7 @@
+apiVersion: secrets.hashicorp.com/v1beta1
+kind: VaultConnection
+metadata:
+  name:  production-vault
+spec:
+  address: "https://vault.balter.no:8200"
+  skipTLSVerify: false
